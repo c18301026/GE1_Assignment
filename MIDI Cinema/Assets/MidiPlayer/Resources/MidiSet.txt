@@ -34,6 +34,7 @@
     <string>Blues Image - Ride Captain Ride</string>
     <string>Bobby Blue Bland - A Touch Of Blues</string>
     <string>Buddy Guy - Midnight Train</string>
+    <string>Carolina Shout</string>
     <string>Christopher Cross - Sailing</string>
     <string>Conan The Barbarian</string>
     <string>Dark Cloud 2 - Dark Chronicle</string>
@@ -54,6 +55,7 @@
     <string>Final Fantasy - Village</string>
     <string>Fire Emblem 3 - Theme</string>
     <string>Genesis - OneForTheVine</string>
+    <string>Heaven Can Wait</string>
     <string>Higelin Jacques - Champagne</string>
     <string>John Lee Hooker - Boom Boom Boom</string>
     <string>kakariko</string>
@@ -90,6 +92,7 @@
     <string>Satie - Gymnopedie 1</string>
     <string>Satie - Gymnopedie 2</string>
     <string>Satie - Trois Gnossiennes</string>
+    <string>Seikai wa Hitotsu! Janai!!</string>
     <string>Sibelius - Finlandia</string>
     <string>Sibelius - Romance</string>
     <string>Take 5 - by Paul Desmond</string>
