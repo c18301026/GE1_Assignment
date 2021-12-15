@@ -28,6 +28,10 @@ public class GameController : MonoBehaviour
 	// Shape styles: 0 = cube, 1 = sphere
 	public int shapeStyle = 0;
 
+	// Help text variables
+	public GameObject helpText;
+	public bool helpOn = true;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -109,6 +113,18 @@ public class GameController : MonoBehaviour
 		if(Input.GetKeyDown(KeyCode.P))
 		{
 			shapeStyle = 1;
+		}
+
+		// Hide/show the help text
+		if(Input.GetKeyDown(KeyCode.H) && !helpOn)
+		{
+			helpText.SetActive(true);
+			helpOn = true;
+		} 
+		else if(Input.GetKeyDown(KeyCode.H) && helpOn)
+		{
+			helpText.SetActive(false);
+			helpOn = false;
 		}
 	}
 
