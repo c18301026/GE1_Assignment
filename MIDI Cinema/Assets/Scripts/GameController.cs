@@ -59,6 +59,13 @@ public class GameController : MonoBehaviour
 		{
 			midiPlayer.MPTK_Stop();
 		}
+
+		// Press R to reset your position & rotation
+		if(Input.GetKeyDown(KeyCode.R))
+		{
+			transform.position = new Vector3(0, 0.5f, -9);
+			transform.rotation = Quaternion.identity;
+		}
 	}
 
 	// Create graphics when a MIDI event occurs.
