@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 138923338}
   - component: {fileID: 138923337}
   - component: {fileID: 138923336}
+  - component: {fileID: 138923341}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -157,7 +158,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &138923337
 BoxCollider:
@@ -236,6 +237,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &138923341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138923335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7b3f8e2dba3245952db12ae818582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  rotationSpeed: 100
+  horizontalInput: 0
+  verticalInput: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
