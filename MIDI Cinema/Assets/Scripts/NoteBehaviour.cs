@@ -6,6 +6,8 @@ public class NoteBehaviour : MonoBehaviour
 {
 	public float speed = 15;
 
+	void Start() {}
+
 	// Update is called once per frame
 	void Update()
 	{

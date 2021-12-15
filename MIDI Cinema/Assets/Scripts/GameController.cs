@@ -91,9 +91,25 @@ public class GameController : MonoBehaviour
 
 				// Different tracks (channels) are in different lanes
 				float noteZPos = mapf(midiEvent.Channel, 0, maxChannels, 5, 38);
+				Vector3 noteSpawnPos = new Vector3(noteXPos, noteYPos, noteZPos);
+
+				float noteHue;
+
+				// Even numbered tracks get the 1st half of hue range & odd numbered tracks get the 2nd half
+				if(midiEvent.Channel % 2 == 0)
+				{
+					noteHue = mapf(midiEvent.Channel, 0, maxChannels, 0, 0.49f);
+				}
+				else
+				{
+					noteHue = mapf(midiEvent.Channel, 0, maxChannels, 0.5f, 1);
+				}
 
 				// Create the visual for the note
-				Instantiate(CubeNote, new Vector3(noteXPos, noteYPos, noteZPos), Quaternion.identity);
+				var noteVisual = Instantiate(CubeNote, noteSpawnPos, Quaternion.identity);
+
+				// Colouring the notes based on their track number.
+				noteVisual.GetComponent<Renderer>().material.color = Color.HSVToRGB(noteHue, 1, 1);
 			}
 		}
 	}
