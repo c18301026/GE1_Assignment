@@ -79,4 +79,14 @@ public class GameController : MonoBehaviour
 	{
 		midiIsPlaying = false;
 	}
+
+	// Processing style map function, i.e., map a value between one range to another range.
+	public float mapf(float x, float min1, float max1, float min2, float max2)
+	{
+		// Find x as a percentage in a range between min1 & max1
+		float percentage = Mathf.InverseLerp(min1, max1, x);
+
+		// Return the corresponding value when you apply the percentage from before into another range
+		return Mathf.Lerp(min2, max2, percentage);
+	}
 }
