@@ -25,6 +25,9 @@ public class GameController : MonoBehaviour
 	// Colour modes: 0 = blue only, 1 = based on track, 2 = randomised
 	public int colourMode = 0;
 
+	// Shape styles: 0 = cube, 1 = sphere
+	public int shapeStyle = 0;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -95,6 +98,18 @@ public class GameController : MonoBehaviour
 		{
 			colourMode = 2;
 		}
+
+		// Press O for cubes
+		if(Input.GetKeyDown(KeyCode.O))
+		{
+			shapeStyle = 0;
+		}
+
+		// "It's spherical!"
+		if(Input.GetKeyDown(KeyCode.P))
+		{
+			shapeStyle = 1;
+		}
 	}
 
 	// Create graphics when a MIDI event occurs.
@@ -135,13 +150,28 @@ public class GameController : MonoBehaviour
 					noteHue = Random.Range(0f, 1f);
 				}
 
-				// Create the visual for the note
-				var noteVisual = Instantiate(CubeNote, noteSpawnPos, Quaternion.identity);
-
-				// Only relevant to colour modes 1 & 2
-				if(colourMode != 0)
+				// Notes can be cube shaped or sphere shaped
+				if(shapeStyle == 0)
 				{
-					noteVisual.GetComponent<Renderer>().material.color = Color.HSVToRGB(noteHue, 1, 1);
+					// Create the visual for the note
+					var noteVisual = Instantiate(CubeNote, noteSpawnPos, Quaternion.identity);
+
+					// Only relevant to colour modes 1 & 2
+					if(colourMode != 0)
+					{
+						noteVisual.GetComponent<Renderer>().material.color = Color.HSVToRGB(noteHue, 1, 1);
+					}
+				}
+				else
+				{
+					// Create the visual for the note
+					var noteVisual = Instantiate(SphereNote, noteSpawnPos, Quaternion.identity);
+
+					// Only relevant to colour modes 1 & 2
+					if(colourMode != 0)
+					{
+						noteVisual.GetComponent<Renderer>().material.color = Color.HSVToRGB(noteHue, 1, 1);
+					}
 				}
 			}
 		}
