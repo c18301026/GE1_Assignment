@@ -626,8 +626,9 @@ MonoBehaviour:
   rotationSpeed: 100
   horizontalInput: 0
   verticalInput: 0
-  midiPlayer: {fileID: 0}
+  midiPlayer: {fileID: 40583907}
   midiIsPlaying: 0
+  CubeNote: {fileID: 4884727524332086063, guid: 7038e42ded0ce404caa94544135d0c23, type: 3}
 --- !u!1 &278989238
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,19 +14,25 @@ public class GameController : MonoBehaviour
 	public MidiFilePlayer midiPlayer;
 	public bool midiIsPlaying = false;
 
+	// Arbitrary number for the max number of channels, but the average MIDI file doesn't have more than this many anyways
+	int maxChannels = 31;
+
+	// Variables related to the note visuals
+	public GameObject CubeNote;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		// Set up the MIDI player
 		midiPlayer = FindObjectOfType<MidiFilePlayer>();
 
-		// You can change the MIDI file by replacing this string with a title in the MidiDB folder, e.g., "Bach - Fugue".
+		// You can change the MIDI file by replacing this string with a title in the MidiDB folder, e.g., "Bach - Fugue"
 		midiPlayer.MPTK_MidiName = "Heaven Can Wait";
 
-		// Create graphics when a MIDI event occurs.
+		// Create graphics when a MIDI event occurs
 		midiPlayer.OnEventNotesMidi.AddListener(NotesToPlay);
 
-		// Turn the flag that indicates the MIDI is playing to false when the MIDI stops playing.
+		// Turn the flag that indicates the MIDI is playing to false when the MIDI stops playing
 		midiPlayer.OnEventEndPlayMidi.AddListener(EndPlay);
 	}
 
@@ -71,16 +77,34 @@ public class GameController : MonoBehaviour
 	// Create graphics when a MIDI event occurs.
 	public void NotesToPlay(List<MPTKEvent> midiEvents)
 	{
+		foreach(MPTKEvent midiEvent in midiEvents)
+		{
+			if(midiEvent.Command == MPTKCommand.NoteOn)
+			{
+				// Notes start at the far right side of the screen & move towards the left
+				float noteXPos = 26;
 
+				// 21 = MIDI number for the lowest note on a piano
+				// 108 = MIDI number for the highest note on a piano
+				// 25 = height of the wall
+				float noteYPos = mapf(midiEvent.Value, 21, 108, 0, 25);
+
+				// Different tracks (channels) are in different lanes
+				float noteZPos = mapf(midiEvent.Channel, 0, maxChannels, 5, 38);
+
+				// Create the visual for the note
+				Instantiate(CubeNote, new Vector3(noteXPos, noteYPos, noteZPos), Quaternion.identity);
+			}
+		}
 	}
 
-	// Turn the flag that indicates the MIDI is playing to false when the MIDI stops playing.
+	// Turn the flag that indicates the MIDI is playing to false when the MIDI stops playing
 	public void EndPlay(string name, EventEndMidiEnum reason)
 	{
 		midiIsPlaying = false;
 	}
 
-	// Processing style map function, i.e., map a value between one range to another range.
+	// Processing style map function, i.e., map a value between one range to another range
 	public float mapf(float x, float min1, float max1, float min2, float max2)
 	{
 		// Find x as a percentage in a range between min1 & max1
