@@ -19,6 +19,10 @@ public class GameController : MonoBehaviour
 
 	// Variables related to the note visuals
 	public GameObject CubeNote;
+	public float noteHue;
+
+	// Colour modes: 0 = same colour, 1 = based on track, 2 = randomised
+	public int colourMode = 0;
 
 	// Start is called before the first frame update
 	void Start()
@@ -72,6 +76,24 @@ public class GameController : MonoBehaviour
 			transform.position = new Vector3(0, 0.5f, -9);
 			transform.rotation = Quaternion.identity;
 		}
+
+		// Press Y for uniform colouring
+		if(Input.GetKeyDown(KeyCode.Y))
+		{
+			colourMode = 0;
+		}
+
+		// Press U for track based colouring
+		if(Input.GetKeyDown(KeyCode.U))
+		{
+			colourMode = 1;
+		}
+
+		// Press I for randomised colouring
+		if(Input.GetKeyDown(KeyCode.I))
+		{
+			colourMode = 2;
+		}
 	}
 
 	// Create graphics when a MIDI event occurs.
@@ -93,23 +115,33 @@ public class GameController : MonoBehaviour
 				float noteZPos = mapf(midiEvent.Channel, 0, maxChannels, 5, 38);
 				Vector3 noteSpawnPos = new Vector3(noteXPos, noteYPos, noteZPos);
 
-				float noteHue;
-
-				// Even numbered tracks get the 1st half of hue range & odd numbered tracks get the 2nd half
-				if(midiEvent.Channel % 2 == 0)
+				// Colouring the notes based on their track number.
+				if(colourMode == 1)
 				{
-					noteHue = mapf(midiEvent.Channel, 0, maxChannels, 0, 0.49f);
+					// Even numbered tracks get the 1st half of hue range & odd numbered tracks get the 2nd half
+					if(midiEvent.Channel % 2 == 0)
+					{
+						noteHue = mapf(midiEvent.Channel, 0, maxChannels, 0, 0.49f);
+					}
+					else
+					{
+						noteHue = mapf(midiEvent.Channel, 0, maxChannels, 0.5f, 1);
+					}
 				}
-				else
+				else if(colourMode == 2)
 				{
-					noteHue = mapf(midiEvent.Channel, 0, maxChannels, 0.5f, 1);
+					// Random colours
+					noteHue = Random.Range(0f, 1f);
 				}
 
 				// Create the visual for the note
 				var noteVisual = Instantiate(CubeNote, noteSpawnPos, Quaternion.identity);
 
-				// Colouring the notes based on their track number.
-				noteVisual.GetComponent<Renderer>().material.color = Color.HSVToRGB(noteHue, 1, 1);
+				// Only relevant to colour modes 1 & 2
+				if(colourMode != 0)
+				{
+					noteVisual.GetComponent<Renderer>().material.color = Color.HSVToRGB(noteHue, 1, 1);
+				}
 			}
 		}
 	}
