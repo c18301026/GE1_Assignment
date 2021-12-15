@@ -19,9 +19,10 @@ public class GameController : MonoBehaviour
 
 	// Variables related to the note visuals
 	public GameObject CubeNote;
+	public GameObject SphereNote;
 	public float noteHue;
 
-	// Colour modes: 0 = same colour, 1 = based on track, 2 = randomised
+	// Colour modes: 0 = blue only, 1 = based on track, 2 = randomised
 	public int colourMode = 0;
 
 	// Start is called before the first frame update
@@ -77,7 +78,7 @@ public class GameController : MonoBehaviour
 			transform.rotation = Quaternion.identity;
 		}
 
-		// Press Y for uniform colouring
+		// Press Y for blue coloured notes only
 		if(Input.GetKeyDown(KeyCode.Y))
 		{
 			colourMode = 0;
