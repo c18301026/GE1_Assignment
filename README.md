@@ -30,7 +30,7 @@ The inspiration for this project idea is Stephen Malinowski's Music Animation Ma
 ## How do I play and visualise my own custom MIDI files?
 1. Download Unity (version 2020.3.19f1) if you haven't already.
 2. Download and open up MIDI Cinema.
-3. Install the Maestro - Midi Player Tool Kit (free version) plugin.
+3. Install the Maestro - Midi Player Tool Kit (free version) plugin (https://assetstore.unity.com/packages/tools/audio/maestro-midi-player-tool-kit-free-107994).
 4. Go to the menu tools > MPTK > Midi File Setup > Add a Midi File (https://paxstellar.fr/setup-mptk-add-midi-files-v2/).
 5. Open up the GameController.cs script.
 6. In the Start() function, locate the line: midiPlayer.MPTK_MidiName = "Heaven Can Wait";
