@@ -31,9 +31,9 @@ The inspiration for this project idea is Stephen Malinowski's Music Animation Ma
 1. Download Unity (version 2020.3.19f1) if you haven't already.
 2. Download and open up MIDI Cinema.
 3. Install the Maestro - Midi Player Tool Kit (free version) plugin.
-4. Go to the menu tools > MPTK > Midi File Setup > Add a Midi File.
+4. Go to the menu tools > MPTK > Midi File Setup > Add a Midi File (https://paxstellar.fr/setup-mptk-add-midi-files-v2/).
 5. Open up the GameController.cs script.
-6. In the Start() function, locate the line: midiPlayer.MPTK_MidiName = "Debussy - Clair De Lune";
+6. In the Start() function, locate the line: midiPlayer.MPTK_MidiName = "Heaven Can Wait";
 7. Simply replace the string with the title of the MIDI file you added: midiPlayer.MPTK_MidiName = "My MIDI File Title";
 
 # How it works
@@ -49,23 +49,36 @@ When you deal with MIDI files that have more than one track, then you may have t
 
 | Class/asset | Source |
 |-----------|-----------|
-| GameController.cs | Self written |
-| NoteBehaviour.cs | Self written |
-| Everything in the MidiPlayer folder | From https://assetstore.unity.com/packages/tools/audio/maestro-midi-player-tool-kit-free-107994 |
+| GameController.cs (Scripts folder) | Created by me |
+| NoteBehaviour.cs (Scripts folder) | Created by me |
+| PlainBlackMaterial (Materials folder) | Created by me |
+| PlainBlueMaterial (Materials folder) | Created by me |
+| CubeNote (Prefabs folder) | Created by me |
+| SphereNote (Prefabs folder) | Created by me |
+| SampleScene (Scenes folder) | Created by me |
+| Heaven Can Wait MIDI file | Composed by Kai Hansen; transcribed & exported to MIDI by me using MuseScore |
+| Seikai wa Hitotsu! Janai!! MIDI file | Composed by Akihiko Yamaguchi; transcribed & exported to MIDI by me using MuseScore |
+| Carolina Shout MIDI file | Composed by James Price Johnson; MIDI file created by John E. Roache; available at: http://www.johnroachemusic.com/c_shout.html |
+| Bach - Fugue MIDI file | Composed by Johann Sebastian Bach; already provided by the MPTK plugin as one of the example MIDI files |
+| MPTK plugin (almost everything in the MidiPlayer folder) | Created by Thierry Bachmann; available at: https://assetstore.unity.com/packages/tools/audio/maestro-midi-player-tool-kit-free-107994 |
 
 # Video Demos
+## Gamma Ray - Heaven Can Wait
 For fans of rock/metal music:
 
 [![YouTube](http://img.youtube.com/vi/v6uiwrtFwBc/0.jpg)](https://www.youtube.com/watch?v=v6uiwrtFwBc)
 
+## Johann Sebastian Bach - Fugue in F minor, BWV 881
 For fans of Baroque music:
 
 [![YouTube](http://img.youtube.com/vi/UGS5At3wi8o/0.jpg)](https://www.youtube.com/watch?v=UGS5At3wi8o)
 
+## James Price Johnson - Carolina Shout
 For fans of jazz music:
 
 [![YouTube](http://img.youtube.com/vi/8bvENPZRXyw/0.jpg)](https://www.youtube.com/watch?v=8bvENPZRXyw)
 
+## Milky Holmes - Seikai wa Hitotsu! Janai!!
 For fans of Japanese pop music:
 
 [![YouTube](http://img.youtube.com/vi/D9Ju5y88Kaw/0.jpg)](https://www.youtube.com/watch?v=D9Ju5y88Kaw)
